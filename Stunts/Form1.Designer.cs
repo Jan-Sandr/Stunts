@@ -29,38 +29,44 @@ namespace Stunts
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.comboBox1Category = new System.Windows.Forms.ComboBox();
             this.comboBoxDifficulty = new System.Windows.Forms.ComboBox();
             this.comboBoxEquipment = new System.Windows.Forms.ComboBox();
             this.listBoxStunts = new System.Windows.Forms.ListBox();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.labelCategory = new System.Windows.Forms.Label();
+            this.label1Category = new System.Windows.Forms.Label();
             this.label1Difficulty = new System.Windows.Forms.Label();
             this.labelEquipment = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.webBrowserVideo = new System.Windows.Forms.WebBrowser();
             this.labelName = new System.Windows.Forms.Label();
-            this.progressBarDifficulty = new System.Windows.Forms.ProgressBar();
             this.label2Difficulty = new System.Windows.Forms.Label();
             this.labelRequirements = new System.Windows.Forms.Label();
             this.textBoxRequirements = new System.Windows.Forms.TextBox();
+            this.progressBarDifficulty = new System.Windows.Forms.ProgressBar();
+            this.labelInstructions = new System.Windows.Forms.Label();
+            this.textBoxInstructions = new System.Windows.Forms.TextBox();
+            this.labelAdvancedTechniques = new System.Windows.Forms.Label();
+            this.textBoxAdvancedTechniques = new System.Windows.Forms.TextBox();
+            this.labelRecommendation = new System.Windows.Forms.Label();
+            this.textBoxRecommendation = new System.Windows.Forms.TextBox();
+            this.panelNoVideo = new System.Windows.Forms.Panel();
+            this.label2Category = new System.Windows.Forms.Label();
+            this.comboBox2Category = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // comboBoxCategory
+            // comboBox1Category
             // 
-            this.comboBoxCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Items.AddRange(new object[] {
+            this.comboBox1Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBox1Category.FormattingEnabled = true;
+            this.comboBox1Category.Items.AddRange(new object[] {
             "Parkour",
             "Gymnastika"});
-            this.comboBoxCategory.Location = new System.Drawing.Point(291, 10);
-            this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(241, 32);
-            this.comboBoxCategory.TabIndex = 0;
-            this.comboBoxCategory.Text = "Všechny";
+            this.comboBox1Category.Location = new System.Drawing.Point(291, 10);
+            this.comboBox1Category.Name = "comboBox1Category";
+            this.comboBox1Category.Size = new System.Drawing.Size(241, 32);
+            this.comboBox1Category.TabIndex = 0;
+            this.comboBox1Category.Text = "Všechny";
             // 
             // comboBoxDifficulty
             // 
@@ -110,15 +116,15 @@ namespace Stunts
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.button1_Click);
             // 
-            // labelCategory
+            // label1Category
             // 
-            this.labelCategory.AutoSize = true;
-            this.labelCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelCategory.Location = new System.Drawing.Point(174, 12);
-            this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(105, 24);
-            this.labelCategory.TabIndex = 5;
-            this.labelCategory.Text = "Kategorie:";
+            this.label1Category.AutoSize = true;
+            this.label1Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1Category.Location = new System.Drawing.Point(174, 12);
+            this.label1Category.Name = "label1Category";
+            this.label1Category.Size = new System.Drawing.Size(105, 24);
+            this.label1Category.TabIndex = 5;
+            this.label1Category.Text = "Kategorie:";
             // 
             // label1Difficulty
             // 
@@ -141,44 +147,20 @@ namespace Stunts
             this.labelEquipment.TabIndex = 7;
             this.labelEquipment.Text = "Potřeba nějakého náčiní ?";
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(656, 402);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 29);
-            this.textBox1.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox2.Location = new System.Drawing.Point(690, 345);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 29);
-            this.textBox2.TabIndex = 9;
-            // 
             // textBoxName
             // 
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxName.Location = new System.Drawing.Point(676, 13);
+            this.textBoxName.Location = new System.Drawing.Point(741, 13);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(144, 29);
+            this.textBoxName.Size = new System.Drawing.Size(303, 29);
             this.textBoxName.TabIndex = 10;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox4.Location = new System.Drawing.Point(602, 357);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 29);
-            this.textBox4.TabIndex = 11;
             // 
             // webBrowserVideo
             // 
             this.webBrowserVideo.Location = new System.Drawing.Point(12, 166);
             this.webBrowserVideo.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserVideo.Name = "webBrowserVideo";
-            this.webBrowserVideo.Size = new System.Drawing.Size(520, 284);
+            this.webBrowserVideo.Size = new System.Drawing.Size(520, 283);
             this.webBrowserVideo.TabIndex = 12;
             // 
             // labelName
@@ -190,15 +172,6 @@ namespace Stunts
             this.labelName.Size = new System.Drawing.Size(79, 24);
             this.labelName.TabIndex = 13;
             this.labelName.Text = "Jméno:";
-            // 
-            // progressBarDifficulty
-            // 
-            this.progressBarDifficulty.ForeColor = System.Drawing.Color.Lime;
-            this.progressBarDifficulty.Location = new System.Drawing.Point(676, 48);
-            this.progressBarDifficulty.Maximum = 10;
-            this.progressBarDifficulty.Name = "progressBarDifficulty";
-            this.progressBarDifficulty.Size = new System.Drawing.Size(144, 29);
-            this.progressBarDifficulty.TabIndex = 14;
             // 
             // label2Difficulty
             // 
@@ -214,7 +187,7 @@ namespace Stunts
             // 
             this.labelRequirements.AutoSize = true;
             this.labelRequirements.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelRequirements.Location = new System.Drawing.Point(551, 86);
+            this.labelRequirements.Location = new System.Drawing.Point(551, 115);
             this.labelRequirements.Name = "labelRequirements";
             this.labelRequirements.Size = new System.Drawing.Size(115, 24);
             this.labelRequirements.TabIndex = 17;
@@ -223,37 +196,141 @@ namespace Stunts
             // textBoxRequirements
             // 
             this.textBoxRequirements.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxRequirements.Location = new System.Drawing.Point(676, 86);
+            this.textBoxRequirements.Location = new System.Drawing.Point(741, 115);
             this.textBoxRequirements.Multiline = true;
             this.textBoxRequirements.Name = "textBoxRequirements";
-            this.textBoxRequirements.Size = new System.Drawing.Size(251, 78);
+            this.textBoxRequirements.Size = new System.Drawing.Size(303, 75);
             this.textBoxRequirements.TabIndex = 16;
+            // 
+            // progressBarDifficulty
+            // 
+            this.progressBarDifficulty.BackColor = System.Drawing.Color.White;
+            this.progressBarDifficulty.ForeColor = System.Drawing.Color.White;
+            this.progressBarDifficulty.Location = new System.Drawing.Point(741, 48);
+            this.progressBarDifficulty.Name = "progressBarDifficulty";
+            this.progressBarDifficulty.Size = new System.Drawing.Size(303, 29);
+            this.progressBarDifficulty.TabIndex = 18;
+            this.progressBarDifficulty.Value = 50;
+            // 
+            // labelInstructions
+            // 
+            this.labelInstructions.AutoSize = true;
+            this.labelInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelInstructions.Location = new System.Drawing.Point(551, 196);
+            this.labelInstructions.Name = "labelInstructions";
+            this.labelInstructions.Size = new System.Drawing.Size(76, 24);
+            this.labelInstructions.TabIndex = 20;
+            this.labelInstructions.Text = "Návod:";
+            // 
+            // textBoxInstructions
+            // 
+            this.textBoxInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxInstructions.Location = new System.Drawing.Point(741, 196);
+            this.textBoxInstructions.Multiline = true;
+            this.textBoxInstructions.Name = "textBoxInstructions";
+            this.textBoxInstructions.Size = new System.Drawing.Size(303, 78);
+            this.textBoxInstructions.TabIndex = 19;
+            // 
+            // labelAdvancedTechniques
+            // 
+            this.labelAdvancedTechniques.AutoSize = true;
+            this.labelAdvancedTechniques.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelAdvancedTechniques.Location = new System.Drawing.Point(551, 280);
+            this.labelAdvancedTechniques.Name = "labelAdvancedTechniques";
+            this.labelAdvancedTechniques.Size = new System.Drawing.Size(186, 24);
+            this.labelAdvancedTechniques.TabIndex = 22;
+            this.labelAdvancedTechniques.Text = "Pokročilé techniky:";
+            // 
+            // textBoxAdvancedTechniques
+            // 
+            this.textBoxAdvancedTechniques.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxAdvancedTechniques.Location = new System.Drawing.Point(741, 280);
+            this.textBoxAdvancedTechniques.Multiline = true;
+            this.textBoxAdvancedTechniques.Name = "textBoxAdvancedTechniques";
+            this.textBoxAdvancedTechniques.Size = new System.Drawing.Size(303, 81);
+            this.textBoxAdvancedTechniques.TabIndex = 21;
+            // 
+            // labelRecommendation
+            // 
+            this.labelRecommendation.AutoSize = true;
+            this.labelRecommendation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelRecommendation.Location = new System.Drawing.Point(551, 367);
+            this.labelRecommendation.Name = "labelRecommendation";
+            this.labelRecommendation.Size = new System.Drawing.Size(125, 24);
+            this.labelRecommendation.TabIndex = 24;
+            this.labelRecommendation.Text = "Doporučení:";
+            // 
+            // textBoxRecommendation
+            // 
+            this.textBoxRecommendation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxRecommendation.Location = new System.Drawing.Point(741, 367);
+            this.textBoxRecommendation.Multiline = true;
+            this.textBoxRecommendation.Name = "textBoxRecommendation";
+            this.textBoxRecommendation.Size = new System.Drawing.Size(303, 78);
+            this.textBoxRecommendation.TabIndex = 23;
+            // 
+            // panelNoVideo
+            // 
+            this.panelNoVideo.AutoSize = true;
+            this.panelNoVideo.Location = new System.Drawing.Point(116, 230);
+            this.panelNoVideo.Name = "panelNoVideo";
+            this.panelNoVideo.Size = new System.Drawing.Size(416, 219);
+            this.panelNoVideo.TabIndex = 25;
+            // 
+            // label2Category
+            // 
+            this.label2Category.AutoSize = true;
+            this.label2Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2Category.Location = new System.Drawing.Point(551, 83);
+            this.label2Category.Name = "label2Category";
+            this.label2Category.Size = new System.Drawing.Size(105, 24);
+            this.label2Category.TabIndex = 27;
+            this.label2Category.Text = "Kategorie:";
+            // 
+            // comboBox2Category
+            // 
+            this.comboBox2Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBox2Category.FormattingEnabled = true;
+            this.comboBox2Category.Items.AddRange(new object[] {
+            "Parkour",
+            "Gymnastika"});
+            this.comboBox2Category.Location = new System.Drawing.Point(741, 80);
+            this.comboBox2Category.Name = "comboBox2Category";
+            this.comboBox2Category.Size = new System.Drawing.Size(303, 32);
+            this.comboBox2Category.TabIndex = 28;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 457);
+            this.ClientSize = new System.Drawing.Size(1054, 461);
+            this.Controls.Add(this.comboBox2Category);
+            this.Controls.Add(this.label2Category);
+            this.Controls.Add(this.panelNoVideo);
+            this.Controls.Add(this.labelRecommendation);
+            this.Controls.Add(this.textBoxRecommendation);
+            this.Controls.Add(this.labelAdvancedTechniques);
+            this.Controls.Add(this.textBoxAdvancedTechniques);
+            this.Controls.Add(this.labelInstructions);
+            this.Controls.Add(this.textBoxInstructions);
+            this.Controls.Add(this.progressBarDifficulty);
             this.Controls.Add(this.labelRequirements);
             this.Controls.Add(this.textBoxRequirements);
             this.Controls.Add(this.label2Difficulty);
-            this.Controls.Add(this.progressBarDifficulty);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.webBrowserVideo);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.labelEquipment);
             this.Controls.Add(this.label1Difficulty);
-            this.Controls.Add(this.labelCategory);
+            this.Controls.Add(this.label1Category);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.listBoxStunts);
             this.Controls.Add(this.comboBoxEquipment);
             this.Controls.Add(this.comboBoxDifficulty);
-            this.Controls.Add(this.comboBoxCategory);
+            this.Controls.Add(this.comboBox1Category);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,24 +338,30 @@ namespace Stunts
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxCategory;
+        private System.Windows.Forms.ComboBox comboBox1Category;
         private System.Windows.Forms.ComboBox comboBoxDifficulty;
         private System.Windows.Forms.ComboBox comboBoxEquipment;
         private System.Windows.Forms.ListBox listBoxStunts;
         private System.Windows.Forms.Button buttonEdit;
-        private System.Windows.Forms.Label labelCategory;
+        private System.Windows.Forms.Label label1Category;
         private System.Windows.Forms.Label label1Difficulty;
         private System.Windows.Forms.Label labelEquipment;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.WebBrowser webBrowserVideo;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.ProgressBar progressBarDifficulty;
         private System.Windows.Forms.Label label2Difficulty;
         private System.Windows.Forms.Label labelRequirements;
         private System.Windows.Forms.TextBox textBoxRequirements;
+        private System.Windows.Forms.ProgressBar progressBarDifficulty;
+        private System.Windows.Forms.Label labelInstructions;
+        private System.Windows.Forms.TextBox textBoxInstructions;
+        private System.Windows.Forms.Label labelAdvancedTechniques;
+        private System.Windows.Forms.TextBox textBoxAdvancedTechniques;
+        private System.Windows.Forms.Label labelRecommendation;
+        private System.Windows.Forms.TextBox textBoxRecommendation;
+        private System.Windows.Forms.Panel panelNoVideo;
+        private System.Windows.Forms.Label label2Category;
+        private System.Windows.Forms.ComboBox comboBox2Category;
     }
 }
 
