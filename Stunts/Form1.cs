@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Stunts
@@ -17,16 +12,28 @@ namespace Stunts
             InitializeComponent();
         }
 
-        
+        SqlConnection sqlConnection;
 
-        private void button1_Click(object sender, EventArgs e)
+        string connectionPath = string.Empty;
+
+        private void ApplicationLoaded(object sender, EventArgs e)
         {
+            connectionPath = GetConnectionPath();
 
+            sqlConnection = new SqlConnection(connectionPath);
+
+            sqlConnection.Open();
+
+            sqlConnection.Close();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private string GetConnectionPath()
         {
-            progressBarDifficulty.Color = Color.Red;
+            string path = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename={0}; Integrated Security = True; Connect Timeout = 30";
+
+            string localPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Database\\DatabaseStunts.mdf";
+
+            return string.Format(path, localPath);
         }
     }
 }
