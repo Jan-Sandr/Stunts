@@ -114,7 +114,6 @@ namespace Stunts
             this.buttonEdit.TabIndex = 4;
             this.buttonEdit.Text = "Editace";
             this.buttonEdit.UseVisualStyleBackColor = true;
-            this.buttonEdit.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1Category
             // 
@@ -330,7 +329,7 @@ namespace Stunts
             this.Controls.Add(this.comboBox1Category);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.ApplicationLoaded);
             this.ResumeLayout(false);
             this.PerformLayout();
 
