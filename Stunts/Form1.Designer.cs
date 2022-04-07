@@ -31,7 +31,6 @@ namespace Stunts
         {
             this.comboBox1Category = new System.Windows.Forms.ComboBox();
             this.comboBoxDifficulty = new System.Windows.Forms.ComboBox();
-            this.comboBoxEquipment = new System.Windows.Forms.ComboBox();
             this.listBoxStunts = new System.Windows.Forms.ListBox();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.label1Category = new System.Windows.Forms.Label();
@@ -53,6 +52,7 @@ namespace Stunts
             this.panelNoVideo = new System.Windows.Forms.Panel();
             this.label2Category = new System.Windows.Forms.Label();
             this.comboBox2Category = new System.Windows.Forms.ComboBox();
+            this.checkBoxEquipment = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // comboBox1Category
@@ -81,19 +81,6 @@ namespace Stunts
             this.comboBoxDifficulty.Size = new System.Drawing.Size(241, 32);
             this.comboBoxDifficulty.TabIndex = 1;
             this.comboBoxDifficulty.Text = "Všechny";
-            // 
-            // comboBoxEquipment
-            // 
-            this.comboBoxEquipment.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxEquipment.FormattingEnabled = true;
-            this.comboBoxEquipment.Items.AddRange(new object[] {
-            "Ano",
-            "Ne"});
-            this.comboBoxEquipment.Location = new System.Drawing.Point(434, 86);
-            this.comboBoxEquipment.Name = "comboBoxEquipment";
-            this.comboBoxEquipment.Size = new System.Drawing.Size(98, 32);
-            this.comboBoxEquipment.TabIndex = 2;
-            this.comboBoxEquipment.Text = "Ano/Ne";
             // 
             // listBoxStunts
             // 
@@ -299,11 +286,22 @@ namespace Stunts
             this.comboBox2Category.Size = new System.Drawing.Size(303, 32);
             this.comboBox2Category.TabIndex = 28;
             // 
+            // checkBoxEquipment
+            // 
+            this.checkBoxEquipment.AutoSize = true;
+            this.checkBoxEquipment.Location = new System.Drawing.Point(452, 95);
+            this.checkBoxEquipment.Name = "checkBoxEquipment";
+            this.checkBoxEquipment.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxEquipment.TabIndex = 29;
+            this.checkBoxEquipment.Text = "checkBox1";
+            this.checkBoxEquipment.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 461);
+            this.Controls.Add(this.checkBoxEquipment);
             this.Controls.Add(this.comboBox2Category);
             this.Controls.Add(this.label2Category);
             this.Controls.Add(this.panelNoVideo);
@@ -325,7 +323,6 @@ namespace Stunts
             this.Controls.Add(this.label1Category);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.listBoxStunts);
-            this.Controls.Add(this.comboBoxEquipment);
             this.Controls.Add(this.comboBoxDifficulty);
             this.Controls.Add(this.comboBox1Category);
             this.Name = "Form1";
@@ -340,7 +337,6 @@ namespace Stunts
 
         private System.Windows.Forms.ComboBox comboBox1Category;
         private System.Windows.Forms.ComboBox comboBoxDifficulty;
-        private System.Windows.Forms.ComboBox comboBoxEquipment;
         private System.Windows.Forms.ListBox listBoxStunts;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Label label1Category;
@@ -362,6 +358,7 @@ namespace Stunts
         private System.Windows.Forms.Panel panelNoVideo;
         private System.Windows.Forms.Label label2Category;
         private System.Windows.Forms.ComboBox comboBox2Category;
+        private System.Windows.Forms.CheckBox checkBoxEquipment;
     }
 }
 

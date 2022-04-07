@@ -54,10 +54,7 @@ namespace Stunts
                 else 
                     comboBox1Category.SelectedIndex = 2;
                 //Equipment
-                if (stunts[listBoxStunts.SelectedIndex].Equipment == 0)
-                    comboBoxEquipment.SelectedIndex = 0;
-                else
-                    comboBoxEquipment.SelectedIndex = 1;
+                checkBoxEquipment.Checked = stunts[listBoxStunts.SelectedIndex].Equipment;
                 //Name
                 textBoxName.Text = stunts[listBoxStunts.SelectedIndex].Name;
                 //Difficulty progress bar
@@ -65,7 +62,7 @@ namespace Stunts
                 //Category
                 for (int i = 0; i < 2; i++)
                 {
-                    if (/*stunts[listBoxStunts.SelectedIndex].Category*/ == comboBox1Category.Items[i])
+                    //if (/*stunts[listBoxStunts.SelectedIndex].Category*/ == comboBox1Category.Items[i])
                         comboBox2Category.SelectedIndex = i; break;
                 }
                 //Requirements 

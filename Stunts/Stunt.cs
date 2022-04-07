@@ -2,25 +2,32 @@
 {
     class Stunt
     {
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        //public enum Category 
-        public int Difficulty { get; private set; }
-        public string Requirements { get; private set; }
-        public string Instructions { get; private set; }
-        public string AdvancedTechniques { get; private set; }
-        public string Experiences { get; private set; }
-        public bool Equipment { get; private set; }
-        public string VideoLink { get; private set; }
+        public int Id { get; }
+        public string Name { get; }
+        public StuntCategory Category { get; } 
+        public int Difficulty { get; }
+        public string Requirements { get; }
+        public string Instructions { get; }
+        public string AdvancedTechniques { get; }
+        public string Experiences { get; }
+        public bool Equipment { get; }
+        public string VideoLink { get; }
 
-        public Stunt(int id, string name, /*asi string CATEGORY??,*/ 
+        public enum StuntCategory
+        {
+            Gymnastics,
+            Parkour,
+            Other
+        };
+
+        public Stunt(int id, string name, int category, 
             int difficulty, string requirements, string
             instructions, string advancedTechniques, string 
             experiences, bool equipment, string videolink)
         {
             Id = id;
             Name = name;
-            //enum Category = ;
+            Category = (StuntCategory)category;
             Difficulty = difficulty;
             Requirements = requirements;
             Instructions = instructions;
