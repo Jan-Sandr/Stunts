@@ -44,27 +44,12 @@ namespace Stunts
             //Listing stunts in listbox
             if (listBoxStunts.SelectedIndex != -1)
             {
-                
-                //Difficulty combobox
-                int difficulty = stunts[listBoxStunts.SelectedIndex].Difficulty;
-                if (difficulty >= 1 && difficulty <= 3)
-                    comboBox1Category.SelectedIndex = 0;
-                else if (difficulty >= 4 && difficulty <= 6)
-                    comboBox1Category.SelectedIndex = 1;
-                else 
-                    comboBox1Category.SelectedIndex = 2;
-                //Equipment
-                checkBoxEquipment.Checked = stunts[listBoxStunts.SelectedIndex].Equipment;
                 //Name
                 textBoxName.Text = stunts[listBoxStunts.SelectedIndex].Name;
                 //Difficulty progress bar
                 progressBarDifficulty.Value = stunts[listBoxStunts.SelectedIndex].Difficulty * 10;
                 //Category
-                for (int i = 0; i < 2; i++)
-                {
-                    //if (/*stunts[listBoxStunts.SelectedIndex].Category*/ == comboBox1Category.Items[i])
-                        comboBox2Category.SelectedIndex = i; break;
-                }
+                comboBox2Category.SelectedIndex = stunts[listBoxStunts.SelectedIndex].Category;
                 //Requirements 
                 textBoxRequirements.Text = stunts[listBoxStunts.SelectedIndex].Requirements;
                 //Instructions
