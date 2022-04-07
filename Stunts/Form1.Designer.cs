@@ -48,8 +48,8 @@ namespace Stunts
             this.textBoxInstructions = new System.Windows.Forms.TextBox();
             this.labelAdvancedTechniques = new System.Windows.Forms.Label();
             this.textBoxAdvancedTechniques = new System.Windows.Forms.TextBox();
-            this.labelRecommendation = new System.Windows.Forms.Label();
-            this.textBoxRecommendation = new System.Windows.Forms.TextBox();
+            this.labelExperiences = new System.Windows.Forms.Label();
+            this.textBoxExperiences = new System.Windows.Forms.TextBox();
             this.panelNoVideo = new System.Windows.Forms.Panel();
             this.label2Category = new System.Windows.Forms.Label();
             this.comboBox2Category = new System.Windows.Forms.ComboBox();
@@ -104,6 +104,7 @@ namespace Stunts
             this.listBoxStunts.Name = "listBoxStunts";
             this.listBoxStunts.Size = new System.Drawing.Size(159, 148);
             this.listBoxStunts.TabIndex = 3;
+            this.listBoxStunts.SelectedIndexChanged += new System.EventHandler(this.listBoxStunts_SelectedIndexChanged);
             // 
             // buttonEdit
             // 
@@ -249,24 +250,24 @@ namespace Stunts
             this.textBoxAdvancedTechniques.Size = new System.Drawing.Size(303, 81);
             this.textBoxAdvancedTechniques.TabIndex = 21;
             // 
-            // labelRecommendation
+            // labelExperiences
             // 
-            this.labelRecommendation.AutoSize = true;
-            this.labelRecommendation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelRecommendation.Location = new System.Drawing.Point(551, 367);
-            this.labelRecommendation.Name = "labelRecommendation";
-            this.labelRecommendation.Size = new System.Drawing.Size(125, 24);
-            this.labelRecommendation.TabIndex = 24;
-            this.labelRecommendation.Text = "Doporučení:";
+            this.labelExperiences.AutoSize = true;
+            this.labelExperiences.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelExperiences.Location = new System.Drawing.Point(551, 367);
+            this.labelExperiences.Name = "labelExperiences";
+            this.labelExperiences.Size = new System.Drawing.Size(117, 24);
+            this.labelExperiences.TabIndex = 24;
+            this.labelExperiences.Text = "Zkušenosti:";
             // 
-            // textBoxRecommendation
+            // textBoxExperiences
             // 
-            this.textBoxRecommendation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxRecommendation.Location = new System.Drawing.Point(741, 367);
-            this.textBoxRecommendation.Multiline = true;
-            this.textBoxRecommendation.Name = "textBoxRecommendation";
-            this.textBoxRecommendation.Size = new System.Drawing.Size(303, 78);
-            this.textBoxRecommendation.TabIndex = 23;
+            this.textBoxExperiences.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxExperiences.Location = new System.Drawing.Point(741, 367);
+            this.textBoxExperiences.Multiline = true;
+            this.textBoxExperiences.Name = "textBoxExperiences";
+            this.textBoxExperiences.Size = new System.Drawing.Size(303, 78);
+            this.textBoxExperiences.TabIndex = 23;
             // 
             // panelNoVideo
             // 
@@ -306,8 +307,8 @@ namespace Stunts
             this.Controls.Add(this.comboBox2Category);
             this.Controls.Add(this.label2Category);
             this.Controls.Add(this.panelNoVideo);
-            this.Controls.Add(this.labelRecommendation);
-            this.Controls.Add(this.textBoxRecommendation);
+            this.Controls.Add(this.labelExperiences);
+            this.Controls.Add(this.textBoxExperiences);
             this.Controls.Add(this.labelAdvancedTechniques);
             this.Controls.Add(this.textBoxAdvancedTechniques);
             this.Controls.Add(this.labelInstructions);
@@ -356,8 +357,8 @@ namespace Stunts
         private System.Windows.Forms.TextBox textBoxInstructions;
         private System.Windows.Forms.Label labelAdvancedTechniques;
         private System.Windows.Forms.TextBox textBoxAdvancedTechniques;
-        private System.Windows.Forms.Label labelRecommendation;
-        private System.Windows.Forms.TextBox textBoxRecommendation;
+        private System.Windows.Forms.Label labelExperiences;
+        private System.Windows.Forms.TextBox textBoxExperiences;
         private System.Windows.Forms.Panel panelNoVideo;
         private System.Windows.Forms.Label label2Category;
         private System.Windows.Forms.ComboBox comboBox2Category;
