@@ -29,7 +29,7 @@ namespace Stunts
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1Category = new System.Windows.Forms.ComboBox();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.comboBoxDifficulty = new System.Windows.Forms.ComboBox();
             this.listBoxStunts = new System.Windows.Forms.ListBox();
             this.buttonEdit = new System.Windows.Forms.Button();
@@ -49,27 +49,27 @@ namespace Stunts
             this.textBoxAdvancedTechniques = new System.Windows.Forms.TextBox();
             this.labelExperiences = new System.Windows.Forms.Label();
             this.textBoxExperiences = new System.Windows.Forms.TextBox();
-            this.panelNoVideo = new System.Windows.Forms.Panel();
-            this.label2Category = new System.Windows.Forms.Label();
-            this.comboBox2Category = new System.Windows.Forms.ComboBox();
             this.checkBoxEquipment = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // comboBox1Category
+            // comboBoxCategory
             // 
-            this.comboBox1Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBox1Category.FormattingEnabled = true;
-            this.comboBox1Category.Items.AddRange(new object[] {
+            this.comboBoxCategory.Enabled = false;
+            this.comboBoxCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Items.AddRange(new object[] {
+            "Gymnastika",
             "Parkour",
-            "Gymnastika"});
-            this.comboBox1Category.Location = new System.Drawing.Point(291, 10);
-            this.comboBox1Category.Name = "comboBox1Category";
-            this.comboBox1Category.Size = new System.Drawing.Size(241, 32);
-            this.comboBox1Category.TabIndex = 0;
-            this.comboBox1Category.Text = "Všechny";
+            "Jiná"});
+            this.comboBoxCategory.Location = new System.Drawing.Point(291, 10);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(241, 32);
+            this.comboBoxCategory.TabIndex = 0;
+            this.comboBoxCategory.Text = "Všechny";
             // 
             // comboBoxDifficulty
             // 
+            this.comboBoxDifficulty.Enabled = false;
             this.comboBoxDifficulty.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxDifficulty.FormattingEnabled = true;
             this.comboBoxDifficulty.Items.AddRange(new object[] {
@@ -91,10 +91,11 @@ namespace Stunts
             this.listBoxStunts.Name = "listBoxStunts";
             this.listBoxStunts.Size = new System.Drawing.Size(159, 148);
             this.listBoxStunts.TabIndex = 3;
-            this.listBoxStunts.SelectedIndexChanged += new System.EventHandler(this.listBoxStunts_SelectedIndexChanged);
+            this.listBoxStunts.SelectedIndexChanged += new System.EventHandler(this.ListBoxStuntsSelectedIndexChanged);
             // 
             // buttonEdit
             // 
+            this.buttonEdit.Enabled = false;
             this.buttonEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonEdit.Location = new System.Drawing.Point(177, 127);
             this.buttonEdit.Name = "buttonEdit";
@@ -136,6 +137,7 @@ namespace Stunts
             // 
             // textBoxName
             // 
+            this.textBoxName.Enabled = false;
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxName.Location = new System.Drawing.Point(741, 13);
             this.textBoxName.Name = "textBoxName";
@@ -149,6 +151,7 @@ namespace Stunts
             this.webBrowserVideo.Name = "webBrowserVideo";
             this.webBrowserVideo.Size = new System.Drawing.Size(520, 283);
             this.webBrowserVideo.TabIndex = 12;
+            this.webBrowserVideo.Visible = false;
             // 
             // labelName
             // 
@@ -182,6 +185,7 @@ namespace Stunts
             // 
             // textBoxRequirements
             // 
+            this.textBoxRequirements.Enabled = false;
             this.textBoxRequirements.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxRequirements.Location = new System.Drawing.Point(741, 115);
             this.textBoxRequirements.Multiline = true;
@@ -192,6 +196,7 @@ namespace Stunts
             // progressBarDifficulty
             // 
             this.progressBarDifficulty.BackColor = System.Drawing.Color.White;
+            this.progressBarDifficulty.Enabled = false;
             this.progressBarDifficulty.ForeColor = System.Drawing.Color.White;
             this.progressBarDifficulty.Location = new System.Drawing.Point(741, 48);
             this.progressBarDifficulty.Name = "progressBarDifficulty";
@@ -211,6 +216,7 @@ namespace Stunts
             // 
             // textBoxInstructions
             // 
+            this.textBoxInstructions.Enabled = false;
             this.textBoxInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxInstructions.Location = new System.Drawing.Point(741, 196);
             this.textBoxInstructions.Multiline = true;
@@ -230,6 +236,7 @@ namespace Stunts
             // 
             // textBoxAdvancedTechniques
             // 
+            this.textBoxAdvancedTechniques.Enabled = false;
             this.textBoxAdvancedTechniques.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxAdvancedTechniques.Location = new System.Drawing.Point(741, 280);
             this.textBoxAdvancedTechniques.Multiline = true;
@@ -249,6 +256,7 @@ namespace Stunts
             // 
             // textBoxExperiences
             // 
+            this.textBoxExperiences.Enabled = false;
             this.textBoxExperiences.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxExperiences.Location = new System.Drawing.Point(741, 367);
             this.textBoxExperiences.Multiline = true;
@@ -256,44 +264,14 @@ namespace Stunts
             this.textBoxExperiences.Size = new System.Drawing.Size(303, 78);
             this.textBoxExperiences.TabIndex = 23;
             // 
-            // panelNoVideo
-            // 
-            this.panelNoVideo.AutoSize = true;
-            this.panelNoVideo.Location = new System.Drawing.Point(116, 230);
-            this.panelNoVideo.Name = "panelNoVideo";
-            this.panelNoVideo.Size = new System.Drawing.Size(416, 219);
-            this.panelNoVideo.TabIndex = 25;
-            // 
-            // label2Category
-            // 
-            this.label2Category.AutoSize = true;
-            this.label2Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2Category.Location = new System.Drawing.Point(551, 83);
-            this.label2Category.Name = "label2Category";
-            this.label2Category.Size = new System.Drawing.Size(105, 24);
-            this.label2Category.TabIndex = 27;
-            this.label2Category.Text = "Kategorie:";
-            // 
-            // comboBox2Category
-            // 
-            this.comboBox2Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBox2Category.FormattingEnabled = true;
-            this.comboBox2Category.Items.AddRange(new object[] {
-            "Parkour",
-            "Gymnastika"});
-            this.comboBox2Category.Location = new System.Drawing.Point(741, 80);
-            this.comboBox2Category.Name = "comboBox2Category";
-            this.comboBox2Category.Size = new System.Drawing.Size(303, 32);
-            this.comboBox2Category.TabIndex = 28;
-            // 
             // checkBoxEquipment
             // 
             this.checkBoxEquipment.AutoSize = true;
-            this.checkBoxEquipment.Location = new System.Drawing.Point(452, 95);
+            this.checkBoxEquipment.Enabled = false;
+            this.checkBoxEquipment.Location = new System.Drawing.Point(517, 97);
             this.checkBoxEquipment.Name = "checkBoxEquipment";
-            this.checkBoxEquipment.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxEquipment.Size = new System.Drawing.Size(15, 14);
             this.checkBoxEquipment.TabIndex = 29;
-            this.checkBoxEquipment.Text = "checkBox1";
             this.checkBoxEquipment.UseVisualStyleBackColor = true;
             // 
             // Form1
@@ -302,9 +280,6 @@ namespace Stunts
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 461);
             this.Controls.Add(this.checkBoxEquipment);
-            this.Controls.Add(this.comboBox2Category);
-            this.Controls.Add(this.label2Category);
-            this.Controls.Add(this.panelNoVideo);
             this.Controls.Add(this.labelExperiences);
             this.Controls.Add(this.textBoxExperiences);
             this.Controls.Add(this.labelAdvancedTechniques);
@@ -324,7 +299,7 @@ namespace Stunts
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.listBoxStunts);
             this.Controls.Add(this.comboBoxDifficulty);
-            this.Controls.Add(this.comboBox1Category);
+            this.Controls.Add(this.comboBoxCategory);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.ApplicationLoaded);
@@ -335,7 +310,7 @@ namespace Stunts
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1Category;
+        private System.Windows.Forms.ComboBox comboBoxCategory;
         private System.Windows.Forms.ComboBox comboBoxDifficulty;
         private System.Windows.Forms.ListBox listBoxStunts;
         private System.Windows.Forms.Button buttonEdit;
@@ -355,9 +330,6 @@ namespace Stunts
         private System.Windows.Forms.TextBox textBoxAdvancedTechniques;
         private System.Windows.Forms.Label labelExperiences;
         private System.Windows.Forms.TextBox textBoxExperiences;
-        private System.Windows.Forms.Panel panelNoVideo;
-        private System.Windows.Forms.Label label2Category;
-        private System.Windows.Forms.ComboBox comboBox2Category;
         private System.Windows.Forms.CheckBox checkBoxEquipment;
     }
 }
