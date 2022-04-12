@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic; //list
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
-using System.Collections.Generic; //list
-using System.Data;
 
 namespace Stunts
 {
@@ -48,6 +48,15 @@ namespace Stunts
                 stunts.Add(new Stunt(Convert.ToInt16(data[0]), data[1], Convert.ToInt16(data[2]) - 1, Convert.ToInt16(data[3]), data[4], data[5], data[6], data[7], Convert.ToBoolean(Convert.ToInt16(data[8])), data[9]));
                 listBoxStunts.Items.Add(stunts[i].Name);
             }
+
+            listBoxStunts.SelectedIndex = listBoxStunts.Items.Count - 1;
+        }
+
+        private void DatabaseHotReload()
+        {
+            stunts = new List<Stunt>();
+            listBoxStunts.Items.Clear();
+            LoadData();
         }
 
         private void ListBoxStuntsSelectedIndexChanged(object sender, EventArgs e)
@@ -66,6 +75,8 @@ namespace Stunts
                 textBoxName.Text = stunts[listBoxStunts.SelectedIndex].Name;
                 //Difficulty progress bar
                 progressBarDifficulty.Value = stunts[listBoxStunts.SelectedIndex].Difficulty * 10;
+                //Difficulty mumeric
+                numericUpDownDifficulty.Value = stunts[listBoxStunts.SelectedIndex].Difficulty;
                 //Category
                 comboBoxCategory.SelectedIndex = (int)stunts[listBoxStunts.SelectedIndex].Category;
                 //Requirements 
@@ -78,14 +89,14 @@ namespace Stunts
                 textBoxExperiences.Text = stunts[listBoxStunts.SelectedIndex].Experiences;
                 //Equipment
                 checkBoxEquipment.Checked = stunts[listBoxStunts.SelectedIndex].Equipment;
-                //Difficulty
+                //VideoLink
+                textBoxVideoLink.Text = stunts[listBoxStunts.SelectedIndex].VideoLink;
 
                 double difficulty = Math.Ceiling((double)stunts[listBoxStunts.SelectedIndex].Difficulty / 3) - 1;
 
                 comboBoxDifficulty.SelectedIndex = Convert.ToInt16(difficulty);
             }
         }
-
 
         private List<string> GetDataFromDatabase(string databaseName)
         {
@@ -156,6 +167,86 @@ namespace Stunts
         private void Notify(string message)
         {
             MessageBox.Show(message);
+        }
+
+        private void DatabaseActionButtonsClick(object sender, EventArgs e)
+        {
+            string action = (sender as Button).Name.Substring(6);
+
+            switch (action)
+            {
+                case "Add":
+                    {
+                        if (AreInputsCorrect())
+                        {
+                            string command = $"INSERT INTO Acrobatics (Name, Category, Difficulty, Requirements, Instructions, AdvancedTechniques, Experiences, Equipment, VideoLink) VALUES ('{textBoxName.Text}', '{comboBoxCategory.SelectedIndex + 1}', '{numericUpDownDifficulty.Value}', '{textBoxRequirements.Text}', '{textBoxInstructions.Text}', '{textBoxAdvancedTechniques.Text}', '{textBoxExperiences.Text}', '{Convert.ToInt32(checkBoxEquipment.Checked)}', '{textBoxVideoLink.Text}')";
+                            ExecuteDatabaseAction(command);
+                            DatabaseHotReload();
+                        }
+
+                        break;
+                    }
+                case "Edit":
+                    {
+                        if (listBoxStunts.SelectedIndex != -1 && AreInputsCorrect())
+                        {
+                            string command = $"UPDATE Acrobatics SET Name = '{textBoxName.Text}', Category = '{comboBoxCategory.SelectedIndex + 1}', Difficulty = '{numericUpDownDifficulty.Value}', Requirements = '{textBoxRequirements.Text}', Instructions = '{textBoxInstructions.Text}', AdvancedTechniques = '{textBoxAdvancedTechniques.Text}', Experiences = '{textBoxExperiences.Text}', Equipment = '{Convert.ToInt32(checkBoxEquipment.Checked)}', VideoLink = '{textBoxVideoLink.Text}' WHERE Id = '{stunts[listBoxStunts.SelectedIndex].Id}'";
+                            ExecuteDatabaseAction(command);
+                            DatabaseHotReload();
+                        }
+                        break;
+                    }
+                case "Delete":
+                    {
+                        if (listBoxStunts.SelectedIndex != -1)
+                        {
+                            string command = $"DELETE FROM Acrobatics WHERE Id='{stunts[listBoxStunts.SelectedIndex].Id}'";
+                            ExecuteDatabaseAction(command);
+                            DatabaseHotReload();
+                        }
+                        break;
+                    }
+            }
+        }
+
+        private bool AreInputsCorrect()
+        {
+            bool areInputsCorrect = true;
+
+            if (textBoxName.Text.Length <= 3)
+            {
+                areInputsCorrect = false;
+                MessageBox.Show("Jméno musí mít minimálně 3 znaky dlouhé.");
+            }
+
+            if (comboBoxDifficulty.SelectedIndex == -1 || comboBoxCategory.SelectedIndex == -1)
+            {
+                areInputsCorrect = false;
+                MessageBox.Show("Obtížnost a kategorie jsou povinné.");
+            }
+
+            return areInputsCorrect;
+        }
+
+        private void ExecuteDatabaseAction(string command)
+        {
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
+
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
+
+        private void NumericUpDownDifficultyValueChanged(object sender, EventArgs e)
+        {
+            progressBarDifficulty.Value = Convert.ToInt32(numericUpDownDifficulty.Value * 10);
+        }
+
+        private void ComboBoxDifficultySelectedIndexChanged(object sender, EventArgs e)
+        {
+            numericUpDownDifficulty.Value = (comboBoxDifficulty.SelectedIndex + 1) * 3 - 1;
         }
     }
 }

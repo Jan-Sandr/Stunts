@@ -4,7 +4,7 @@
     {
         public int Id { get; }
         public string Name { get; }
-        public StuntCategory Category { get; } 
+        public StuntCategory Category { get; }
         public int Difficulty { get; }
         public string Requirements { get; }
         public string Instructions { get; }
@@ -20,9 +20,9 @@
             Other
         };
 
-        public Stunt(int id, string name, int category, 
+        public Stunt(int id, string name, int category,
             int difficulty, string requirements, string
-            instructions, string advancedTechniques, string 
+            instructions, string advancedTechniques, string
             experiences, bool equipment, string videolink)
         {
             Id = id;

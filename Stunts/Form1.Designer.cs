@@ -50,11 +50,15 @@ namespace Stunts
             this.labelExperiences = new System.Windows.Forms.Label();
             this.textBoxExperiences = new System.Windows.Forms.TextBox();
             this.checkBoxEquipment = new System.Windows.Forms.CheckBox();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.textBoxVideoLink = new System.Windows.Forms.TextBox();
+            this.numericUpDownDifficulty = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDifficulty)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxCategory
             // 
-            this.comboBoxCategory.Enabled = false;
             this.comboBoxCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxCategory.FormattingEnabled = true;
             this.comboBoxCategory.Items.AddRange(new object[] {
@@ -69,7 +73,6 @@ namespace Stunts
             // 
             // comboBoxDifficulty
             // 
-            this.comboBoxDifficulty.Enabled = false;
             this.comboBoxDifficulty.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxDifficulty.FormattingEnabled = true;
             this.comboBoxDifficulty.Items.AddRange(new object[] {
@@ -81,6 +84,7 @@ namespace Stunts
             this.comboBoxDifficulty.Size = new System.Drawing.Size(241, 32);
             this.comboBoxDifficulty.TabIndex = 1;
             this.comboBoxDifficulty.Text = "Všechny";
+            this.comboBoxDifficulty.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDifficultySelectedIndexChanged);
             // 
             // listBoxStunts
             // 
@@ -95,14 +99,14 @@ namespace Stunts
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Enabled = false;
             this.buttonEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonEdit.Location = new System.Drawing.Point(177, 127);
+            this.buttonEdit.Location = new System.Drawing.Point(291, 127);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(355, 33);
+            this.buttonEdit.Size = new System.Drawing.Size(108, 33);
             this.buttonEdit.TabIndex = 4;
             this.buttonEdit.Text = "Editace";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.DatabaseActionButtonsClick);
             // 
             // label1Category
             // 
@@ -137,7 +141,6 @@ namespace Stunts
             // 
             // textBoxName
             // 
-            this.textBoxName.Enabled = false;
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxName.Location = new System.Drawing.Point(741, 13);
             this.textBoxName.Name = "textBoxName";
@@ -146,10 +149,10 @@ namespace Stunts
             // 
             // webBrowserVideo
             // 
-            this.webBrowserVideo.Location = new System.Drawing.Point(12, 166);
+            this.webBrowserVideo.Location = new System.Drawing.Point(12, 196);
             this.webBrowserVideo.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserVideo.Name = "webBrowserVideo";
-            this.webBrowserVideo.Size = new System.Drawing.Size(520, 283);
+            this.webBrowserVideo.Size = new System.Drawing.Size(520, 253);
             this.webBrowserVideo.TabIndex = 12;
             this.webBrowserVideo.Visible = false;
             // 
@@ -185,11 +188,11 @@ namespace Stunts
             // 
             // textBoxRequirements
             // 
-            this.textBoxRequirements.Enabled = false;
             this.textBoxRequirements.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxRequirements.Location = new System.Drawing.Point(741, 115);
             this.textBoxRequirements.Multiline = true;
             this.textBoxRequirements.Name = "textBoxRequirements";
+            this.textBoxRequirements.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxRequirements.Size = new System.Drawing.Size(303, 75);
             this.textBoxRequirements.TabIndex = 16;
             // 
@@ -216,11 +219,11 @@ namespace Stunts
             // 
             // textBoxInstructions
             // 
-            this.textBoxInstructions.Enabled = false;
             this.textBoxInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxInstructions.Location = new System.Drawing.Point(741, 196);
             this.textBoxInstructions.Multiline = true;
             this.textBoxInstructions.Name = "textBoxInstructions";
+            this.textBoxInstructions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxInstructions.Size = new System.Drawing.Size(303, 78);
             this.textBoxInstructions.TabIndex = 19;
             // 
@@ -236,11 +239,11 @@ namespace Stunts
             // 
             // textBoxAdvancedTechniques
             // 
-            this.textBoxAdvancedTechniques.Enabled = false;
             this.textBoxAdvancedTechniques.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxAdvancedTechniques.Location = new System.Drawing.Point(741, 280);
             this.textBoxAdvancedTechniques.Multiline = true;
             this.textBoxAdvancedTechniques.Name = "textBoxAdvancedTechniques";
+            this.textBoxAdvancedTechniques.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxAdvancedTechniques.Size = new System.Drawing.Size(303, 81);
             this.textBoxAdvancedTechniques.TabIndex = 21;
             // 
@@ -256,29 +259,79 @@ namespace Stunts
             // 
             // textBoxExperiences
             // 
-            this.textBoxExperiences.Enabled = false;
             this.textBoxExperiences.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxExperiences.Location = new System.Drawing.Point(741, 367);
             this.textBoxExperiences.Multiline = true;
             this.textBoxExperiences.Name = "textBoxExperiences";
+            this.textBoxExperiences.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxExperiences.Size = new System.Drawing.Size(303, 78);
             this.textBoxExperiences.TabIndex = 23;
             // 
             // checkBoxEquipment
             // 
             this.checkBoxEquipment.AutoSize = true;
-            this.checkBoxEquipment.Enabled = false;
             this.checkBoxEquipment.Location = new System.Drawing.Point(517, 97);
             this.checkBoxEquipment.Name = "checkBoxEquipment";
             this.checkBoxEquipment.Size = new System.Drawing.Size(15, 14);
             this.checkBoxEquipment.TabIndex = 29;
             this.checkBoxEquipment.UseVisualStyleBackColor = true;
             // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonAdd.Location = new System.Drawing.Point(177, 127);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(108, 33);
+            this.buttonAdd.TabIndex = 30;
+            this.buttonAdd.Text = "Přidání";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.DatabaseActionButtonsClick);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonDelete.Location = new System.Drawing.Point(405, 127);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(108, 33);
+            this.buttonDelete.TabIndex = 31;
+            this.buttonDelete.Text = "Smazat";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.DatabaseActionButtonsClick);
+            // 
+            // textBoxVideoLink
+            // 
+            this.textBoxVideoLink.Location = new System.Drawing.Point(12, 169);
+            this.textBoxVideoLink.Name = "textBoxVideoLink";
+            this.textBoxVideoLink.Size = new System.Drawing.Size(520, 20);
+            this.textBoxVideoLink.TabIndex = 32;
+            // 
+            // numericUpDownDifficulty
+            // 
+            this.numericUpDownDifficulty.Location = new System.Drawing.Point(741, 84);
+            this.numericUpDownDifficulty.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownDifficulty.Name = "numericUpDownDifficulty";
+            this.numericUpDownDifficulty.Size = new System.Drawing.Size(301, 20);
+            this.numericUpDownDifficulty.TabIndex = 33;
+            this.numericUpDownDifficulty.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownDifficulty.ValueChanged += new System.EventHandler(this.NumericUpDownDifficultyValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 461);
+            this.Controls.Add(this.numericUpDownDifficulty);
+            this.Controls.Add(this.textBoxVideoLink);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.checkBoxEquipment);
             this.Controls.Add(this.labelExperiences);
             this.Controls.Add(this.textBoxExperiences);
@@ -303,6 +356,7 @@ namespace Stunts
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.ApplicationLoaded);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDifficulty)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,6 +385,10 @@ namespace Stunts
         private System.Windows.Forms.Label labelExperiences;
         private System.Windows.Forms.TextBox textBoxExperiences;
         private System.Windows.Forms.CheckBox checkBoxEquipment;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.TextBox textBoxVideoLink;
+        private System.Windows.Forms.NumericUpDown numericUpDownDifficulty;
     }
 }
 
