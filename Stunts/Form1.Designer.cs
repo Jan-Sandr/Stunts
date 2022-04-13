@@ -54,7 +54,10 @@ namespace Stunts
             this.buttonDelete = new System.Windows.Forms.Button();
             this.textBoxVideoLink = new System.Windows.Forms.TextBox();
             this.numericUpDownDifficulty = new System.Windows.Forms.NumericUpDown();
+            this.saveFileDialogSaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBoxNoVideo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDifficulty)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoVideo)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxCategory
@@ -323,11 +326,20 @@ namespace Stunts
             0});
             this.numericUpDownDifficulty.ValueChanged += new System.EventHandler(this.NumericUpDownDifficultyValueChanged);
             // 
+            // pictureBoxNoVideo
+            // 
+            this.pictureBoxNoVideo.Location = new System.Drawing.Point(12, 196);
+            this.pictureBoxNoVideo.Name = "pictureBoxNoVideo";
+            this.pictureBoxNoVideo.Size = new System.Drawing.Size(456, 212);
+            this.pictureBoxNoVideo.TabIndex = 34;
+            this.pictureBoxNoVideo.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 461);
+            this.Controls.Add(this.pictureBoxNoVideo);
             this.Controls.Add(this.numericUpDownDifficulty);
             this.Controls.Add(this.textBoxVideoLink);
             this.Controls.Add(this.buttonDelete);
@@ -357,6 +369,7 @@ namespace Stunts
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.ApplicationLoaded);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDifficulty)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoVideo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,6 +402,8 @@ namespace Stunts
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.TextBox textBoxVideoLink;
         private System.Windows.Forms.NumericUpDown numericUpDownDifficulty;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogSaveFile;
+        private System.Windows.Forms.PictureBox pictureBoxNoVideo;
     }
 }
 

@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic; //list
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Stunts
 {
@@ -26,6 +27,7 @@ namespace Stunts
 
             sqlConnection = new SqlConnection(connectionPath);
 
+            pictureBoxNoVideo.Visible = false;
             LoadData();
         }
 
@@ -71,6 +73,7 @@ namespace Stunts
             //Listing stunts in listbox
             if (listBoxStunts.SelectedIndex != -1)
             {
+                pictureBoxNoVideo.Visible = false;
                 //Name
                 textBoxName.Text = stunts[listBoxStunts.SelectedIndex].Name;
                 //Difficulty progress bar
@@ -91,6 +94,17 @@ namespace Stunts
                 checkBoxEquipment.Checked = stunts[listBoxStunts.SelectedIndex].Equipment;
                 //VideoLink
                 textBoxVideoLink.Text = stunts[listBoxStunts.SelectedIndex].VideoLink;
+                //Video
+                try
+                {
+                    webBrowserVideo.Navigate(stunts[listBoxStunts.SelectedIndex].VideoLink);
+                }
+                catch
+                {
+                    pictureBoxNoVideo.Visible = true;
+                    pictureBoxNoVideo.Image = Image.FromFile("novideo.png");
+                }
+
 
                 double difficulty = Math.Ceiling((double)stunts[listBoxStunts.SelectedIndex].Difficulty / 3) - 1;
 
@@ -101,7 +115,7 @@ namespace Stunts
         private List<string> GetDataFromDatabase(string databaseName)
         {
             List<string> data = new List<string>();
-
+            /*
             string query = $"SELECT * FROM {databaseName}";
 
             SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
@@ -124,7 +138,7 @@ namespace Stunts
             {
                 sqlConnection.Close();
             }
-
+            */
             return data;
         }
 
@@ -157,7 +171,7 @@ namespace Stunts
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
 
-            sqlDataAdapter.Fill(dataTable);
+            //sqlDataAdapter.Fill(dataTable);
 
             sqlDataAdapter.Dispose();
 
@@ -247,6 +261,26 @@ namespace Stunts
         private void ComboBoxDifficultySelectedIndexChanged(object sender, EventArgs e)
         {
             numericUpDownDifficulty.Value = (comboBoxDifficulty.SelectedIndex + 1) * 3 - 1;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show("Uložit do souboru?", "Uložení", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                StreamWriter souborzapsani;
+                if (DialogResult.OK == saveFileDialogSaveFile.ShowDialog())
+                {
+                    string fileextract = "Id;Name;Category;Difficulty;Requirements;Instructions;AdvancedTechniques;Experiences;Equipment;VideoLink" + Environment.NewLine;
+                    foreach (Stunt stunt in stunts)
+                    {
+                        fileextract = stunt.Id + ";" + stunt.Name + ";" + stunt.Category + ";" + stunt.Difficulty + ";" + stunt.Requirements + ";" + stunt.Instructions + ";" + stunt.AdvancedTechniques + ";" + stunt.Experiences + ";" + stunt.Equipment + ";" + stunt.VideoLink + ";" + Environment.NewLine;
+                    }
+
+                    souborzapsani = new StreamWriter(saveFileDialogSaveFile.FileName);
+                    souborzapsani.Write(fileextract);
+                    souborzapsani.Close();
+                }
+            }
         }
     }
 }
