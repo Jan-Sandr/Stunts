@@ -21,6 +21,8 @@ namespace Stunts
 
         List<Stunt> stunts = new List<Stunt>();
 
+        int index = 0;
+
         private void ApplicationLoaded(object sender, EventArgs e)
         {
             connectionPath = GetConnectionPath();
@@ -73,47 +75,49 @@ namespace Stunts
             //Listing stunts in listbox
             if (listBoxStunts.SelectedIndex != -1)
             {
+                index = 0; 
+                foreach(Stunt stunt in stunts)
+                {
+                    if(stunt.Name == Convert.ToString(listBoxStunts.SelectedItem))
+                        break;
+                    index++;
+                }
                 pictureBoxNoVideo.Visible = false;
                 //Name
-                textBoxName.Text = stunts[listBoxStunts.SelectedIndex].Name;
+                textBoxName.Text = stunts[index].Name;
                 //Difficulty progress bar
-                progressBarDifficulty.Value = stunts[listBoxStunts.SelectedIndex].Difficulty * 10;
+                progressBarDifficulty.Value = stunts[index].Difficulty * 10;
                 //Difficulty mumeric
-                numericUpDownDifficulty.Value = stunts[listBoxStunts.SelectedIndex].Difficulty;
+                numericUpDownDifficulty.Value = stunts[index].Difficulty;
                 //Category
-                comboBoxCategory.SelectedIndex = (int)stunts[listBoxStunts.SelectedIndex].Category;
+                if(Convert.ToString(stunts[index].Category) == "Gymnastics")
+                    comboBoxCategory2.SelectedIndex = 0;
+                else if (Convert.ToString(stunts[index].Category) == "Parkour")
+                    comboBoxCategory2.SelectedIndex = 1;
+                else if (Convert.ToString(stunts[index].Category) == "Other")
+                    comboBoxCategory2.SelectedIndex = 2;
                 //Requirements 
-                textBoxRequirements.Text = stunts[listBoxStunts.SelectedIndex].Requirements;
+                textBoxRequirements.Text = stunts[index].Requirements;
                 //Instructions
-                textBoxInstructions.Text = stunts[listBoxStunts.SelectedIndex].Instructions;
+                textBoxInstructions.Text = stunts[index].Instructions;
                 //AdvancedTechniques
-                textBoxAdvancedTechniques.Text = stunts[listBoxStunts.SelectedIndex].AdvancedTechniques;
+                textBoxAdvancedTechniques.Text = stunts[index].AdvancedTechniques;
                 //Experiences
-                textBoxExperiences.Text = stunts[listBoxStunts.SelectedIndex].Experiences;
+                textBoxExperiences.Text = stunts[index].Experiences;
                 //Equipment
-                checkBoxEquipment.Checked = stunts[listBoxStunts.SelectedIndex].Equipment;
+                checkBoxEquipment.Checked = stunts[index].Equipment;
                 //VideoLink
-                textBoxVideoLink.Text = stunts[listBoxStunts.SelectedIndex].VideoLink;
+                textBoxVideoLink.Text = stunts[index].VideoLink;
                 //Video
                 try
                 {
-                    webBrowserVideo.Navigate(stunts[listBoxStunts.SelectedIndex].VideoLink);
+                    webBrowserVideo.Navigate(stunts[index].VideoLink);
                 }
                 catch
                 {
                     pictureBoxNoVideo.Visible = true;
                     pictureBoxNoVideo.Image = Image.FromFile("novideo.png");
                 }
-
-
-                double difficulty = Math.Ceiling((double)stunts[listBoxStunts.SelectedIndex].Difficulty / 3) - 1;
-
-                if (difficulty == 3)
-                {
-                    difficulty = 2;
-                }
-
-                comboBoxDifficulty.SelectedIndex = Convert.ToInt16(difficulty);
             }
         }
 
@@ -198,7 +202,7 @@ namespace Stunts
                     {
                         if (AreInputsCorrect())
                         {
-                            string command = $"INSERT INTO Acrobatics (Name, Category, Difficulty, Requirements, Instructions, AdvancedTechniques, Experiences, Equipment, VideoLink) VALUES ('{textBoxName.Text}', '{comboBoxCategory.SelectedIndex + 1}', '{numericUpDownDifficulty.Value}', '{textBoxRequirements.Text}', '{textBoxInstructions.Text}', '{textBoxAdvancedTechniques.Text}', '{textBoxExperiences.Text}', '{Convert.ToInt32(checkBoxEquipment.Checked)}', '{textBoxVideoLink.Text}')";
+                            string command = $"INSERT INTO Acrobatics (Name, Category, Difficulty, Requirements, Instructions, AdvancedTechniques, Experiences, Equipment, VideoLink) VALUES ('{textBoxName.Text}', '{comboBoxCategory2.SelectedIndex + 1}', '{numericUpDownDifficulty.Value}', '{textBoxRequirements.Text}', '{textBoxInstructions.Text}', '{textBoxAdvancedTechniques.Text}', '{textBoxExperiences.Text}', '{Convert.ToInt32(checkBoxEquipment.Checked)}', '{textBoxVideoLink.Text}')";
                             ExecuteDatabaseAction(command);
                             DatabaseHotReload();
                         }
@@ -209,7 +213,7 @@ namespace Stunts
                     {
                         if (listBoxStunts.SelectedIndex != -1 && AreInputsCorrect())
                         {
-                            string command = $"UPDATE Acrobatics SET Name = '{textBoxName.Text}', Category = '{comboBoxCategory.SelectedIndex + 1}', Difficulty = '{numericUpDownDifficulty.Value}', Requirements = '{textBoxRequirements.Text}', Instructions = '{textBoxInstructions.Text}', AdvancedTechniques = '{textBoxAdvancedTechniques.Text}', Experiences = '{textBoxExperiences.Text}', Equipment = '{Convert.ToInt32(checkBoxEquipment.Checked)}', VideoLink = '{textBoxVideoLink.Text}' WHERE Id = '{stunts[listBoxStunts.SelectedIndex].Id}'";
+                            string command = $"UPDATE Acrobatics SET Name = '{textBoxName.Text}', Category = '{comboBoxCategory2.SelectedIndex + 1}', Difficulty = '{numericUpDownDifficulty.Value}', Requirements = '{textBoxRequirements.Text}', Instructions = '{textBoxInstructions.Text}', AdvancedTechniques = '{textBoxAdvancedTechniques.Text}', Experiences = '{textBoxExperiences.Text}', Equipment = '{Convert.ToInt32(checkBoxEquipment.Checked)}', VideoLink = '{textBoxVideoLink.Text}' WHERE Id = '{stunts[index].Id}'";
                             ExecuteDatabaseAction(command);
                             DatabaseHotReload();
                         }
@@ -265,7 +269,8 @@ namespace Stunts
 
         private void ComboBoxDifficultySelectedIndexChanged(object sender, EventArgs e)
         {
-            numericUpDownDifficulty.Value = stunts[listBoxStunts.SelectedIndex].Difficulty;
+            //numericUpDownDifficulty.Value = stunts[listBoxStunts.SelectedIndex].Difficulty;
+            Filtration();
         }
 
         private void ApplicationClosing(object sender, FormClosingEventArgs e)
@@ -296,6 +301,58 @@ namespace Stunts
                 souborzapsani.Write(fileextract);
                 souborzapsani.Close();
             }
+        }
+
+        private void Filtration()
+        {
+            listBoxStunts.Items.Clear();
+            foreach (Stunt stunt in stunts)
+            {
+                bool controling = true;
+                //Category
+                if (comboBoxCategory.SelectedIndex != 3)
+                {
+                    if (comboBoxCategory.SelectedIndex == 0 && stunt.Category != Stunt.StuntCategory.Gymnastics ||
+                        comboBoxCategory.SelectedIndex == 1 && stunt.Category != Stunt.StuntCategory.Parkour ||
+                        comboBoxCategory.SelectedIndex == 2 && stunt.Category != Stunt.StuntCategory.Other)
+                        controling = false;
+                }
+                //Difficulty
+                if (comboBoxDifficulty.SelectedIndex != 3)
+                {
+                    if(comboBoxDifficulty.SelectedIndex == 0 && stunt.Difficulty < 11 && stunt.Difficulty > 3 || 
+                       comboBoxDifficulty.SelectedIndex == 1 && stunt.Difficulty < 11 && stunt.Difficulty > 6  || 
+                       comboBoxDifficulty.SelectedIndex == 1 && stunt.Difficulty < 4 && stunt.Difficulty > 0 ||
+                       comboBoxDifficulty.SelectedIndex == 2 && stunt.Difficulty < 7 && stunt.Difficulty > 0)
+                       controling = false;
+                }
+                //Equipment
+                bool equipmentneeded = false;
+                if (checkBoxEquipment2.Checked)
+                    equipmentneeded = true;
+
+
+                if(equipmentneeded && !stunt.Equipment)
+                    controling = false;
+
+                //Konečná
+                if (controling == true)
+                {
+                    listBoxStunts.Items.Add(stunt.Name);
+                }
+            }
+
+
+        }
+
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Filtration();
+        }
+
+        private void checkBoxEquipment2_CheckedChanged(object sender, EventArgs e)
+        {
+            Filtration();
         }
     }
 }

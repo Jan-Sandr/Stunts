@@ -57,6 +57,10 @@ namespace Stunts
             this.saveFileDialogSaveFile = new System.Windows.Forms.SaveFileDialog();
             this.pictureBoxNoVideo = new System.Windows.Forms.PictureBox();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.labelCategory = new System.Windows.Forms.Label();
+            this.comboBoxCategory2 = new System.Windows.Forms.ComboBox();
+            this.labelEquipment2 = new System.Windows.Forms.Label();
+            this.checkBoxEquipment2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDifficulty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoVideo)).BeginInit();
             this.SuspendLayout();
@@ -68,12 +72,14 @@ namespace Stunts
             this.comboBoxCategory.Items.AddRange(new object[] {
             "Gymnastika",
             "Parkour",
-            "Jiná"});
+            "Jiná",
+            "Všechny"});
             this.comboBoxCategory.Location = new System.Drawing.Point(291, 10);
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(241, 32);
             this.comboBoxCategory.TabIndex = 0;
             this.comboBoxCategory.Text = "Všechny";
+            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
             // 
             // comboBoxDifficulty
             // 
@@ -82,7 +88,8 @@ namespace Stunts
             this.comboBoxDifficulty.Items.AddRange(new object[] {
             "1-3",
             "4-6",
-            "7-10"});
+            "7-10",
+            "Všechny"});
             this.comboBoxDifficulty.Location = new System.Drawing.Point(291, 48);
             this.comboBoxDifficulty.Name = "comboBoxDifficulty";
             this.comboBoxDifficulty.Size = new System.Drawing.Size(241, 32);
@@ -146,7 +153,7 @@ namespace Stunts
             // textBoxName
             // 
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxName.Location = new System.Drawing.Point(741, 13);
+            this.textBoxName.Location = new System.Drawing.Point(739, 46);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(303, 29);
             this.textBoxName.TabIndex = 10;
@@ -164,7 +171,7 @@ namespace Stunts
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelName.Location = new System.Drawing.Point(551, 13);
+            this.labelName.Location = new System.Drawing.Point(549, 46);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(79, 24);
             this.labelName.TabIndex = 13;
@@ -174,7 +181,7 @@ namespace Stunts
             // 
             this.label2Difficulty.AutoSize = true;
             this.label2Difficulty.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2Difficulty.Location = new System.Drawing.Point(551, 47);
+            this.label2Difficulty.Location = new System.Drawing.Point(549, 80);
             this.label2Difficulty.Name = "label2Difficulty";
             this.label2Difficulty.Size = new System.Drawing.Size(103, 24);
             this.label2Difficulty.TabIndex = 15;
@@ -184,7 +191,7 @@ namespace Stunts
             // 
             this.labelRequirements.AutoSize = true;
             this.labelRequirements.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelRequirements.Location = new System.Drawing.Point(551, 115);
+            this.labelRequirements.Location = new System.Drawing.Point(549, 148);
             this.labelRequirements.Name = "labelRequirements";
             this.labelRequirements.Size = new System.Drawing.Size(115, 24);
             this.labelRequirements.TabIndex = 17;
@@ -193,7 +200,7 @@ namespace Stunts
             // textBoxRequirements
             // 
             this.textBoxRequirements.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxRequirements.Location = new System.Drawing.Point(741, 115);
+            this.textBoxRequirements.Location = new System.Drawing.Point(739, 148);
             this.textBoxRequirements.Multiline = true;
             this.textBoxRequirements.Name = "textBoxRequirements";
             this.textBoxRequirements.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -205,7 +212,7 @@ namespace Stunts
             this.progressBarDifficulty.BackColor = System.Drawing.Color.White;
             this.progressBarDifficulty.Enabled = false;
             this.progressBarDifficulty.ForeColor = System.Drawing.Color.White;
-            this.progressBarDifficulty.Location = new System.Drawing.Point(741, 48);
+            this.progressBarDifficulty.Location = new System.Drawing.Point(739, 81);
             this.progressBarDifficulty.Name = "progressBarDifficulty";
             this.progressBarDifficulty.Size = new System.Drawing.Size(303, 29);
             this.progressBarDifficulty.TabIndex = 18;
@@ -215,7 +222,7 @@ namespace Stunts
             // 
             this.labelInstructions.AutoSize = true;
             this.labelInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelInstructions.Location = new System.Drawing.Point(551, 196);
+            this.labelInstructions.Location = new System.Drawing.Point(549, 229);
             this.labelInstructions.Name = "labelInstructions";
             this.labelInstructions.Size = new System.Drawing.Size(76, 24);
             this.labelInstructions.TabIndex = 20;
@@ -224,7 +231,7 @@ namespace Stunts
             // textBoxInstructions
             // 
             this.textBoxInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxInstructions.Location = new System.Drawing.Point(741, 196);
+            this.textBoxInstructions.Location = new System.Drawing.Point(739, 229);
             this.textBoxInstructions.Multiline = true;
             this.textBoxInstructions.Name = "textBoxInstructions";
             this.textBoxInstructions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -235,7 +242,7 @@ namespace Stunts
             // 
             this.labelAdvancedTechniques.AutoSize = true;
             this.labelAdvancedTechniques.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelAdvancedTechniques.Location = new System.Drawing.Point(551, 280);
+            this.labelAdvancedTechniques.Location = new System.Drawing.Point(549, 313);
             this.labelAdvancedTechniques.Name = "labelAdvancedTechniques";
             this.labelAdvancedTechniques.Size = new System.Drawing.Size(186, 24);
             this.labelAdvancedTechniques.TabIndex = 22;
@@ -244,7 +251,7 @@ namespace Stunts
             // textBoxAdvancedTechniques
             // 
             this.textBoxAdvancedTechniques.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxAdvancedTechniques.Location = new System.Drawing.Point(741, 280);
+            this.textBoxAdvancedTechniques.Location = new System.Drawing.Point(739, 313);
             this.textBoxAdvancedTechniques.Multiline = true;
             this.textBoxAdvancedTechniques.Name = "textBoxAdvancedTechniques";
             this.textBoxAdvancedTechniques.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -255,7 +262,7 @@ namespace Stunts
             // 
             this.labelExperiences.AutoSize = true;
             this.labelExperiences.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelExperiences.Location = new System.Drawing.Point(551, 367);
+            this.labelExperiences.Location = new System.Drawing.Point(549, 400);
             this.labelExperiences.Name = "labelExperiences";
             this.labelExperiences.Size = new System.Drawing.Size(117, 24);
             this.labelExperiences.TabIndex = 24;
@@ -264,7 +271,7 @@ namespace Stunts
             // textBoxExperiences
             // 
             this.textBoxExperiences.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxExperiences.Location = new System.Drawing.Point(741, 367);
+            this.textBoxExperiences.Location = new System.Drawing.Point(739, 400);
             this.textBoxExperiences.Multiline = true;
             this.textBoxExperiences.Name = "textBoxExperiences";
             this.textBoxExperiences.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -274,7 +281,7 @@ namespace Stunts
             // checkBoxEquipment
             // 
             this.checkBoxEquipment.AutoSize = true;
-            this.checkBoxEquipment.Location = new System.Drawing.Point(517, 97);
+            this.checkBoxEquipment.Location = new System.Drawing.Point(630, 119);
             this.checkBoxEquipment.Name = "checkBoxEquipment";
             this.checkBoxEquipment.Size = new System.Drawing.Size(15, 14);
             this.checkBoxEquipment.TabIndex = 29;
@@ -311,7 +318,7 @@ namespace Stunts
             // 
             // numericUpDownDifficulty
             // 
-            this.numericUpDownDifficulty.Location = new System.Drawing.Point(741, 84);
+            this.numericUpDownDifficulty.Location = new System.Drawing.Point(739, 117);
             this.numericUpDownDifficulty.Maximum = new decimal(new int[] {
             10,
             0,
@@ -350,11 +357,59 @@ namespace Stunts
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.ButtonSaveClick);
             // 
+            // labelCategory
+            // 
+            this.labelCategory.AutoSize = true;
+            this.labelCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelCategory.Location = new System.Drawing.Point(549, 13);
+            this.labelCategory.Name = "labelCategory";
+            this.labelCategory.Size = new System.Drawing.Size(105, 24);
+            this.labelCategory.TabIndex = 36;
+            this.labelCategory.Text = "Kategorie:";
+            // 
+            // comboBoxCategory2
+            // 
+            this.comboBoxCategory2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxCategory2.FormattingEnabled = true;
+            this.comboBoxCategory2.Items.AddRange(new object[] {
+            "Gymnastika",
+            "Parkour",
+            "Jiná",
+            "Všechny"});
+            this.comboBoxCategory2.Location = new System.Drawing.Point(739, 9);
+            this.comboBoxCategory2.Name = "comboBoxCategory2";
+            this.comboBoxCategory2.Size = new System.Drawing.Size(303, 32);
+            this.comboBoxCategory2.TabIndex = 37;
+            // 
+            // labelEquipment2
+            // 
+            this.labelEquipment2.AutoSize = true;
+            this.labelEquipment2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelEquipment2.Location = new System.Drawing.Point(549, 113);
+            this.labelEquipment2.Name = "labelEquipment2";
+            this.labelEquipment2.Size = new System.Drawing.Size(75, 24);
+            this.labelEquipment2.TabIndex = 38;
+            this.labelEquipment2.Text = "Náčiní:";
+            // 
+            // checkBoxEquipment2
+            // 
+            this.checkBoxEquipment2.AutoSize = true;
+            this.checkBoxEquipment2.Location = new System.Drawing.Point(517, 99);
+            this.checkBoxEquipment2.Name = "checkBoxEquipment2";
+            this.checkBoxEquipment2.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxEquipment2.TabIndex = 39;
+            this.checkBoxEquipment2.UseVisualStyleBackColor = true;
+            this.checkBoxEquipment2.CheckedChanged += new System.EventHandler(this.checkBoxEquipment2_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 491);
+            this.Controls.Add(this.checkBoxEquipment2);
+            this.Controls.Add(this.labelEquipment2);
+            this.Controls.Add(this.comboBoxCategory2);
+            this.Controls.Add(this.labelCategory);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.pictureBoxNoVideo);
             this.Controls.Add(this.numericUpDownDifficulty);
@@ -423,6 +478,10 @@ namespace Stunts
         private System.Windows.Forms.SaveFileDialog saveFileDialogSaveFile;
         private System.Windows.Forms.PictureBox pictureBoxNoVideo;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Label labelCategory;
+        private System.Windows.Forms.ComboBox comboBoxCategory2;
+        private System.Windows.Forms.Label labelEquipment2;
+        private System.Windows.Forms.CheckBox checkBoxEquipment2;
     }
 }
 
