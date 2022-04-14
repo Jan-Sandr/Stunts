@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace Stunts
 {
@@ -108,6 +108,11 @@ namespace Stunts
 
                 double difficulty = Math.Ceiling((double)stunts[listBoxStunts.SelectedIndex].Difficulty / 3) - 1;
 
+                if (difficulty == 3)
+                {
+                    difficulty = 2;
+                }
+
                 comboBoxDifficulty.SelectedIndex = Convert.ToInt16(difficulty);
             }
         }
@@ -115,7 +120,7 @@ namespace Stunts
         private List<string> GetDataFromDatabase(string databaseName)
         {
             List<string> data = new List<string>();
-            /*
+
             string query = $"SELECT * FROM {databaseName}";
 
             SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
@@ -138,7 +143,7 @@ namespace Stunts
             {
                 sqlConnection.Close();
             }
-            */
+
             return data;
         }
 
@@ -171,7 +176,7 @@ namespace Stunts
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
 
-            //sqlDataAdapter.Fill(dataTable);
+            sqlDataAdapter.Fill(dataTable);
 
             sqlDataAdapter.Dispose();
 
@@ -260,26 +265,37 @@ namespace Stunts
 
         private void ComboBoxDifficultySelectedIndexChanged(object sender, EventArgs e)
         {
-            numericUpDownDifficulty.Value = (comboBoxDifficulty.SelectedIndex + 1) * 3 - 1;
+            numericUpDownDifficulty.Value = stunts[listBoxStunts.SelectedIndex].Difficulty;
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void ApplicationClosing(object sender, FormClosingEventArgs e)
         {
             if (DialogResult.Yes == MessageBox.Show("Uložit do souboru?", "Uložení", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
-                StreamWriter souborzapsani;
-                if (DialogResult.OK == saveFileDialogSaveFile.ShowDialog())
-                {
-                    string fileextract = "Id;Name;Category;Difficulty;Requirements;Instructions;AdvancedTechniques;Experiences;Equipment;VideoLink" + Environment.NewLine;
-                    foreach (Stunt stunt in stunts)
-                    {
-                        fileextract = stunt.Id + ";" + stunt.Name + ";" + stunt.Category + ";" + stunt.Difficulty + ";" + stunt.Requirements + ";" + stunt.Instructions + ";" + stunt.AdvancedTechniques + ";" + stunt.Experiences + ";" + stunt.Equipment + ";" + stunt.VideoLink + ";" + Environment.NewLine;
-                    }
+                WriteToFile();
+            }
+        }
 
-                    souborzapsani = new StreamWriter(saveFileDialogSaveFile.FileName);
-                    souborzapsani.Write(fileextract);
-                    souborzapsani.Close();
+        private void ButtonSaveClick(object sender, EventArgs e)
+        {
+            WriteToFile();
+        }
+
+        private void WriteToFile()
+        {
+            StreamWriter souborzapsani;
+            if (DialogResult.OK == saveFileDialogSaveFile.ShowDialog())
+            {
+                string fileextract = "Id;Name;Category;Difficulty;Requirements;Instructions;AdvancedTechniques;Experiences;Equipment;VideoLink" + Environment.NewLine;
+
+                foreach (Stunt stunt in stunts)
+                {
+                    fileextract += stunt.Id + ";" + stunt.Name + ";" + stunt.Category + ";" + stunt.Difficulty + ";" + stunt.Requirements + ";" + stunt.Instructions + ";" + stunt.AdvancedTechniques + ";" + stunt.Experiences + ";" + stunt.Equipment + ";" + stunt.VideoLink + ";" + Environment.NewLine;
                 }
+
+                souborzapsani = new StreamWriter(saveFileDialogSaveFile.FileName);
+                souborzapsani.Write(fileextract);
+                souborzapsani.Close();
             }
         }
     }

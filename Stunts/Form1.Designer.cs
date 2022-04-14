@@ -56,6 +56,7 @@ namespace Stunts
             this.numericUpDownDifficulty = new System.Windows.Forms.NumericUpDown();
             this.saveFileDialogSaveFile = new System.Windows.Forms.SaveFileDialog();
             this.pictureBoxNoVideo = new System.Windows.Forms.PictureBox();
+            this.buttonSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDifficulty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoVideo)).BeginInit();
             this.SuspendLayout();
@@ -326,6 +327,10 @@ namespace Stunts
             0});
             this.numericUpDownDifficulty.ValueChanged += new System.EventHandler(this.NumericUpDownDifficultyValueChanged);
             // 
+            // saveFileDialogSaveFile
+            // 
+            this.saveFileDialogSaveFile.Filter = "csv|*.csv";
+            // 
             // pictureBoxNoVideo
             // 
             this.pictureBoxNoVideo.Location = new System.Drawing.Point(12, 196);
@@ -334,11 +339,23 @@ namespace Stunts
             this.pictureBoxNoVideo.TabIndex = 34;
             this.pictureBoxNoVideo.TabStop = false;
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonSave.Location = new System.Drawing.Point(12, 455);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(108, 33);
+            this.buttonSave.TabIndex = 35;
+            this.buttonSave.Text = "Uložit";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.ButtonSaveClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1054, 461);
+            this.ClientSize = new System.Drawing.Size(1054, 491);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.pictureBoxNoVideo);
             this.Controls.Add(this.numericUpDownDifficulty);
             this.Controls.Add(this.textBoxVideoLink);
@@ -367,6 +384,7 @@ namespace Stunts
             this.Controls.Add(this.comboBoxCategory);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ApplicationClosing);
             this.Load += new System.EventHandler(this.ApplicationLoaded);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDifficulty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoVideo)).EndInit();
@@ -404,6 +422,7 @@ namespace Stunts
         private System.Windows.Forms.NumericUpDown numericUpDownDifficulty;
         private System.Windows.Forms.SaveFileDialog saveFileDialogSaveFile;
         private System.Windows.Forms.PictureBox pictureBoxNoVideo;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
 
