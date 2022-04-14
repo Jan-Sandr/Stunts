@@ -108,7 +108,7 @@ namespace Stunts
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(108, 33);
             this.buttonEdit.TabIndex = 4;
-            this.buttonEdit.Text = "Editace";
+            this.buttonEdit.Text = "Editovat";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.DatabaseActionButtonsClick);
             // 

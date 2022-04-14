@@ -292,7 +292,6 @@ namespace Stunts
                 {
                     fileextract += stunt.Id + ";" + stunt.Name + ";" + stunt.Category + ";" + stunt.Difficulty + ";" + stunt.Requirements + ";" + stunt.Instructions + ";" + stunt.AdvancedTechniques + ";" + stunt.Experiences + ";" + stunt.Equipment + ";" + stunt.VideoLink + ";" + Environment.NewLine;
                 }
-
                 souborzapsani = new StreamWriter(saveFileDialogSaveFile.FileName);
                 souborzapsani.Write(fileextract);
                 souborzapsani.Close();
