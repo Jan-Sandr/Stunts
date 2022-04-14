@@ -111,12 +111,17 @@ namespace Stunts
                 //Video
                 try
                 {
-                    webBrowserVideo.Navigate(stunts[index].VideoLink);
+                    /*string html = "<html><head>";
+                    html += "<meta content='IE=Edge' http-equiv='X-UA-Compatible'/>";
+                    html += "<iframe id='video' src= 'https://www.youtube.com/embed/{0}' width='600' height='300' frameborder='0' allowfullscreen></iframe>";
+                    html += "</body></html>";
+                    this.webBrowserVideo.DocumentText = string.Format(html, stunts[index].VideoLink.Split('=')[1]);*/
+                    this.webBrowserVideo.Navigate(stunts[index].VideoLink);
                 }
                 catch
                 {
                     pictureBoxNoVideo.Visible = true;
-                    pictureBoxNoVideo.Image = Image.FromFile("novideo.png");
+                    //pictureBoxNoVideo.Image = Image.FromFile("novideo.png");
                 }
             }
         }
