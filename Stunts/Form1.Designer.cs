@@ -160,10 +160,10 @@ namespace Stunts
             // 
             // webBrowserVideo
             // 
-            this.webBrowserVideo.Location = new System.Drawing.Point(12, 494);
+            this.webBrowserVideo.Location = new System.Drawing.Point(12, 196);
             this.webBrowserVideo.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserVideo.Name = "webBrowserVideo";
-            this.webBrowserVideo.Size = new System.Drawing.Size(1030, 565);
+            this.webBrowserVideo.Size = new System.Drawing.Size(520, 253);
             this.webBrowserVideo.TabIndex = 12;
             this.webBrowserVideo.Visible = false;
             // 
@@ -405,7 +405,7 @@ namespace Stunts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1054, 1071);
+            this.ClientSize = new System.Drawing.Size(1054, 491);
             this.Controls.Add(this.checkBoxEquipment2);
             this.Controls.Add(this.labelEquipment2);
             this.Controls.Add(this.comboBoxCategory2);
