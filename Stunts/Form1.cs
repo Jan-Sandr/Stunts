@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Stunts
@@ -18,6 +19,8 @@ namespace Stunts
         SqlConnection sqlConnection;
 
         string connectionPath = string.Empty;
+
+        string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
 
         List<Stunt> stunts = new List<Stunt>();
 
@@ -37,7 +40,7 @@ namespace Stunts
         {
             string path = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename={0}; Integrated Security = True; Connect Timeout = 30";
 
-            string localPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Database\\DatabaseStunts.mdf";
+            string localPath = projectPath + "\\Database\\DatabaseStunts.mdf";
 
             return string.Format(path, localPath);
         }
@@ -50,10 +53,22 @@ namespace Stunts
             {
                 string[] data = rows[i].Split(';');
                 stunts.Add(new Stunt(Convert.ToInt16(data[0]), data[1], Convert.ToInt16(data[2]) - 1, Convert.ToInt16(data[3]), data[4], data[5], data[6], data[7], Convert.ToBoolean(Convert.ToInt16(data[8])), data[9]));
-                listBoxStunts.Items.Add(stunts[i].Name);
+                AddStuntToListBox(stunts[i]);
             }
 
             listBoxStunts.SelectedIndex = listBoxStunts.Items.Count - 1;
+        }
+
+        private void AddStuntToListBox(Stunt stunt)
+        {
+            if (checkBoxShowDifficulty.Checked)
+            {
+                listBoxStunts.Items.Add(stunt.Name + " " + stunt.Difficulty);
+            }
+            else
+            {
+                listBoxStunts.Items.Add(stunt.Name);
+            }         
         }
 
         private void DatabaseHotReload()
@@ -75,11 +90,20 @@ namespace Stunts
             //Listing stunts in listbox
             if (listBoxStunts.SelectedIndex != -1)
             {
-                index = 0; 
-                foreach(Stunt stunt in stunts)
+                index = 0;
+                foreach (Stunt stunt in stunts)
                 {
-                    if(stunt.Name == Convert.ToString(listBoxStunts.SelectedItem))
-                        break;
+                    if (checkBoxShowDifficulty.Checked)
+                    {
+                        if (stunt.Name + " " + stunt.Difficulty == Convert.ToString(listBoxStunts.SelectedItem))
+                            break;
+                    }
+                    else
+                    {
+                        if (stunt.Name == Convert.ToString(listBoxStunts.SelectedItem))
+                            break;
+                    }
+                    
                     index++;
                 }
                 pictureBoxNoVideo.Visible = false;
@@ -90,7 +114,7 @@ namespace Stunts
                 //Difficulty mumeric
                 numericUpDownDifficulty.Value = stunts[index].Difficulty;
                 //Category
-                if(Convert.ToString(stunts[index].Category) == "Gymnastics")
+                if (Convert.ToString(stunts[index].Category) == "Gymnastics")
                     comboBoxCategory2.SelectedIndex = 0;
                 else if (Convert.ToString(stunts[index].Category) == "Parkour")
                     comboBoxCategory2.SelectedIndex = 1;
@@ -109,21 +133,27 @@ namespace Stunts
                 //VideoLink
                 textBoxVideoLink.Text = stunts[index].VideoLink;
                 //Video
-                try
+
+                if (stunts[index].VideoLink != "")
                 {
-                    /*string html = "<html><head>";
+                    string html = "<html><head>";
                     html += "<meta content='IE=Edge' http-equiv='X-UA-Compatible'/>";
-                    html += "<iframe id='video' src= 'https://www.youtube.com/embed/{0}' width='600' height='300' frameborder='0' allowfullscreen></iframe>";
+                    html += "<iframe id='video' src= 'https://www.youtube.com/embed/{0}' width='600' height='300' frameborder='0'></iframe>";
                     html += "</body></html>";
-                    this.webBrowserVideo.DocumentText = string.Format(html, stunts[index].VideoLink.Split('=')[1]);*/
-                    this.webBrowserVideo.Navigate(stunts[index].VideoLink);
+
+                    webBrowserVideo.DocumentText = string.Format(html, GetEmbedLink(stunts[index].VideoLink.Split('/').Last()) + "?autoplay=1&rel=0&controls=0");
                 }
-                catch
+                else
                 {
                     pictureBoxNoVideo.Visible = true;
-                    //pictureBoxNoVideo.Image = Image.FromFile("novideo.png");
+                    pictureBoxNoVideo.Image = Image.FromFile(projectPath + "\\Pictures\\NoVideo.png");
                 }
             }
+        }
+
+        private string GetEmbedLink(string videoLink)
+        {
+            return videoLink.Contains("=") ? videoLink.Split('=')[1] : videoLink.Split('/').Last();
         }
 
         private List<string> GetDataFromDatabase(string databaseName)
@@ -343,19 +373,29 @@ namespace Stunts
                 //Konečná
                 if (controling == true)
                 {
-                    listBoxStunts.Items.Add(stunt.Name);
+                    AddStuntToListBox(stunt);
                 }
             }
 
 
         }
 
-        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxCategorySelectedIndexChanged(object sender, EventArgs e)
         {
             Filtration();
         }
 
-        private void checkBoxEquipment2_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxEquipment2CheckedChanged(object sender, EventArgs e)
+        {
+            Filtration();
+        }
+
+        private void WebBrowserVideoDocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowserVideo.Document.Body.Style = "overflow:hidden";
+        }
+
+        private void CheckBoxShowDifficultyCheckedChanged(object sender, EventArgs e)
         {
             Filtration();
         }
