@@ -258,7 +258,7 @@ namespace Stunts
                     {
                         if (listBoxStunts.SelectedIndex != -1)
                         {
-                            string command = $"DELETE FROM Acrobatics WHERE Id='{stunts[listBoxStunts.SelectedIndex].Id}'";
+                            string command = $"DELETE FROM Acrobatics WHERE Id='{stunts[index].Id}'";
                             ExecuteDatabaseAction(command);
                             DatabaseHotReload();
                         }
